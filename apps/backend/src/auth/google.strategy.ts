@@ -8,7 +8,7 @@ import {
   User,
   OnboardingStatus,
   UserRole,
-} from 'src/database/entities/user.entity';
+} from '../database/entities/user.entity';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {

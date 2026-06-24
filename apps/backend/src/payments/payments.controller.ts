@@ -15,8 +15,8 @@ import { CreatePaymentDto } from './dto/create-payment.dto';
 import { VerifyPaymentDto } from './dto/verify-payment.dto';
 import { Roles } from '../auth/roles.decorator';
 import { RolesGuard } from '../auth/roles.guard';
-import { UserRole } from 'src/database/entities/user.entity';
-import { PayoutStatus } from 'src/database/entities/payout.entity';
+import { UserRole } from '../database/entities/user.entity';
+import { PayoutStatus } from '../database/entities/payout.entity';
 
 @Controller('payments')
 @UseGuards(JwtAuthGuard)

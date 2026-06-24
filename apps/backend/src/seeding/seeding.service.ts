@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { Booking, BookingStatus } from 'src/database/entities/booking.entity';
-import { Turf } from 'src/database/entities/turf.entity';
+import { Booking, BookingStatus } from '../database/entities/booking.entity';
+import { Turf } from '../database/entities/turf.entity';
 import {
   OnboardingStatus,
   User,
   UserRole,
-} from 'src/database/entities/user.entity';
+} from '../database/entities/user.entity';
 import { Repository } from 'typeorm';
-import { Payment } from 'src/database/entities/payment.entity';
+import { Payment } from '../database/entities/payment.entity';
 
 @Injectable()
 export class SeedingService {

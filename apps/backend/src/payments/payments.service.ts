@@ -10,11 +10,11 @@ import * as crypto from 'crypto';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Razorpay = require('razorpay');
 
-import { Payment, PaymentStatus } from 'src/database/entities/payment.entity';
-import { Booking, BookingStatus } from 'src/database/entities/booking.entity';
-import { Turf } from 'src/database/entities/turf.entity';
-import { User, UserRole } from 'src/database/entities/user.entity';
-import { Payout, PayoutStatus } from 'src/database/entities/payout.entity';
+import { Payment, PaymentStatus } from '../database/entities/payment.entity';
+import { Booking, BookingStatus } from '../database/entities/booking.entity';
+import { Turf } from '../database/entities/turf.entity';
+import { User, UserRole } from '../database/entities/user.entity';
+import { Payout, PayoutStatus } from '../database/entities/payout.entity';
 import { CreatePaymentDto } from './dto/create-payment.dto';
 import { VerifyPaymentDto } from './dto/verify-payment.dto';
 
