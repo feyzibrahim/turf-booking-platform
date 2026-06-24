@@ -4,7 +4,7 @@ import {
     NotFoundException
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User, UserRole } from 'src/database/entities/user.entity';
+import { User, UserRole } from '../database/entities/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

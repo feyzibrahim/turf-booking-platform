@@ -11,8 +11,8 @@ import {
   OnboardingStatus,
   User,
   UserRole,
-} from 'src/database/entities/user.entity';
-import { OtpService } from 'src/otp/otp.service';
+} from '../database/entities/user.entity';
+import { OtpService } from '../otp/otp.service';
 import { Repository } from 'typeorm';
 import { LoginDto } from './dto/login.dto';
 import {
