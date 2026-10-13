@@ -5,6 +5,7 @@ import 'package:mobile/core/storage/local_storage.dart';
 import 'package:mobile/core/constants/app_constants.dart';
 import 'package:mobile/routes/app_paths.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'dart:async';
 
 class AuthViewmodel extends GetxController {
@@ -57,6 +58,7 @@ class AuthViewmodel extends GetxController {
   // ──────────────────────────────────────────────
   var isLoading = false.obs;
   var isGoogleLoading = false.obs;
+  var isAppleLoading = false.obs;
   var isSendingOtp = false.obs;
   var selectedRole = 'user'.obs;
   var otpSent = false.obs;
@@ -298,7 +300,73 @@ class AuthViewmodel extends GetxController {
       isLoading.value = false;
       print('[Google] done, isLoading=false');
     }
-  } // ──────────────────────────────────────────────
+  }
+
+  // ──────────────────────────────────────────────
+  // Apple Sign-In
+  // ──────────────────────────────────────────────
+  Future<void> loginWithApple() async {
+    try {
+      isAppleLoading.value = true;
+      isLoading.value = true;
+      print('[Apple] start sign-in');
+
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      final identityToken = credential.identityToken;
+      print(
+        '[Apple] received credential. IdentityToken present: ${identityToken != null && identityToken.isNotEmpty}',
+      );
+
+      if (identityToken == null || identityToken.isEmpty) {
+        _showError('Apple Sign-In failed: could not retrieve identity token');
+        return;
+      }
+
+      final response = await _authService.loginWithApple(
+        identityToken: identityToken,
+        authorizationCode: credential.authorizationCode,
+        firstName: credential.givenName,
+        lastName: credential.familyName,
+      );
+      print('[Apple] backend response: $response');
+
+      if (response['success'] == true && response['data'] != null) {
+        _saveSession(response['data']);
+        Get.offAllNamed(RoutePaths.home);
+      } else {
+        _showError(response['message'] ?? 'Apple login failed');
+      }
+    } on SignInWithAppleAuthorizationException catch (e) {
+      print(
+        '[Apple] SignInWithAppleAuthorizationException: code=${e.code}, message="${e.message}"',
+      );
+      if (e.code == AuthorizationErrorCode.canceled) {
+        print('[Apple] User dismissed sign-in.');
+        return;
+      }
+      _showError('Apple Sign-In failed: ${e.message}');
+    } catch (e) {
+      print('[Apple] error: $e');
+      final errStr = e.toString().toLowerCase();
+      if (errStr.contains('cancel') || errStr.contains('cancelled')) {
+        print('[Apple] User cancelled sign-in.');
+        return;
+      }
+      _showError('Apple Sign-In error: ${e.toString()}');
+    } finally {
+      isAppleLoading.value = false;
+      isLoading.value = false;
+      print('[Apple] done, isLoading=false');
+    }
+  }
+
+  // ──────────────────────────────────────────────
   // OTP — Registration Flow
   // ──────────────────────────────────────────────
 

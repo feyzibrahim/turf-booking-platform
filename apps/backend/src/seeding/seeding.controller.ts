@@ -15,4 +15,11 @@ export class SeedingController {
     async seed() {
         return this.seedingService.seed();
     }
+
+    @Post('reviewers')
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRole.ADMIN)
+    async seedReviewers() {
+        return this.seedingService.seedReviewers();
+    }
 }

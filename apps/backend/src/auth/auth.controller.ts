@@ -29,6 +29,7 @@ import {
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { UpdateNotificationsDto } from './dto/update-notifications.dto';
 import { GoogleLoginDto } from './dto/google-login.dto';
+import { AppleLoginDto } from './dto/apple-login.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { ConfigService } from '@nestjs/config';
 import type { Response } from 'express';
@@ -148,5 +149,10 @@ export class AuthController {
   @Post('google/token')
   async googleTokenLogin(@Body() dto: GoogleLoginDto) {
     return this.authService.loginWithGoogleToken(dto);
+  }
+
+  @Post('apple/token')
+  async appleTokenLogin(@Body() dto: AppleLoginDto) {
+    return this.authService.loginWithAppleToken(dto);
   }
 }

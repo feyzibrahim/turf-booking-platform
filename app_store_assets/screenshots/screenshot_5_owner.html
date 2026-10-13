@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>App Store Screenshot 5 - Turf Partner Hub</title>
+  <link rel="stylesheet" href="screenshot_template.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    .owner-header {
+      padding: 90px 40px 24px;
+      background: #111624;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .owner-body {
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .metric-card {
+      background: #141B2A;
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .metric-card.accent {
+      background: linear-gradient(135deg, rgba(236, 33, 86, 0.15) 0%, #141B2A 100%);
+      border-color: rgba(236, 33, 86, 0.3);
+    }
+    .booking-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .booking-item {
+      background: #141B2A;
+      border-radius: 24px;
+      padding: 24px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="appstore-canvas" id="canvas-screenshot-5">
+    <div class="ambient-glow-top" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, rgba(245, 158, 11, 0) 70%);"></div>
+    <div class="ambient-glow-bottom"></div>
+    <div class="pitch-lines"></div>
+
+    <div class="header-container">
+      <div class="badge-tag" style="color: #FBBF24; border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.1);">📊 Turf Manager Dashboard</div>
+      <h1 class="headline">MANAGE VENUE & <span style="background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LIVE EARNINGS</span></h1>
+      <p class="subheadline">For turf owners: track bookings, adjust slot pricing, and grow ground occupancy seamlessly.</p>
+    </div>
+
+    <div class="iphone-frame">
+      <div class="screen-container">
+        <div class="dynamic-island">
+          <div class="island-sensor"></div>
+          <div class="island-camera"></div>
+        </div>
+
+        <img id="user-img-5" class="user-screenshot-img" alt="User Screenshot">
+
+        <div class="screen-content" id="mock-ui-5">
+          <div class="owner-header">
+            <div>
+              <div style="font-size: 18px; color: #F59E0B; font-weight: 700;">OWNER PORTAL</div>
+              <div style="font-size: 32px; font-weight: 800; color: white;">Arena 51 Sports Hub</div>
+            </div>
+            <div style="background: #1E293B; padding: 12px 20px; border-radius: 16px; font-size: 20px; font-weight: 700; color: #10B981;">● Online</div>
+          </div>
+
+          <div class="owner-body">
+            <!-- Metrics -->
+            <div class="metrics-grid">
+              <div class="metric-card accent">
+                <div style="font-size: 20px; color: #94A3B8;">Today's Revenue</div>
+                <div style="font-size: 42px; font-weight: 800; color: #10B981; margin: 8px 0;">₹24,500</div>
+                <div style="font-size: 18px; color: #34D399;">↗ +18% vs yesterday</div>
+              </div>
+
+              <div class="metric-card">
+                <div style="font-size: 20px; color: #94A3B8;">Occupancy</div>
+                <div style="font-size: 42px; font-weight: 800; color: white; margin: 8px 0;">92%</div>
+                <div style="font-size: 18px; color: #60A5FA;">18 of 20 slots booked</div>
+              </div>
+            </div>
+
+            <!-- Real-time Slot Controls -->
+            <div style="font-size: 28px; font-weight: 700; color: white; margin-top: 10px;">Live Slot Controls</div>
+            <div style="background: #141B2A; border-radius: 28px; padding: 24px; border: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 24px; font-weight: 700; color: white;">Night Prime Slot (8 PM - 9 PM)</div>
+                <div style="font-size: 18px; color: #94A3B8;">Astro Pitch A • Peak Demand Rate</div>
+              </div>
+              <div style="background: #EC2156; color: white; padding: 12px 24px; border-radius: 16px; font-size: 20px; font-weight: 700;">₹1,200/hr</div>
+            </div>
+
+            <!-- Recent bookings -->
+            <div style="font-size: 28px; font-weight: 700; color: white; margin-top: 10px;">Recent Bookings</div>
+            <div class="booking-list">
+              <div class="booking-item">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                  <div style="font-size: 36px;">⚽</div>
+                  <div>
+                    <div style="font-size: 24px; font-weight: 700; color: white;">Rahul Sharma</div>
+                    <div style="font-size: 18px; color: #94A3B8;">07:00 PM - 08:00 PM • Paid Online</div>
+                  </div>
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #10B981;">₹1,000</div>
+              </div>
+
+              <div class="booking-item">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                  <div style="font-size: 36px;">🏏</div>
+                  <div>
+                    <div style="font-size: 24px; font-weight: 700; color: white;">Blasters Cricket Club</div>
+                    <div style="font-size: 18px; color: #94A3B8;">08:00 PM - 10:00 PM (2 hrs)</div>
+                  </div>
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #10B981;">₹2,400</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label class="dropzone-overlay" title="Upload actual app screenshot to replace preview">
+          <span>📷 Drop or Click to Replace with Your Screenshot</span>
+          <input type="file" accept="image/*" onchange="loadScreenshot5(event)">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar-controls">
+    <button class="tool-btn" onclick="exportScreenshot('canvas-screenshot-5', 'AppStore_5_OwnerDashboard.png')">
+      💾 Export 1290x2796 PNG
+    </button>
+  </div>
+
+  <script>
+    function loadScreenshot5(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById('user-img-5');
+          img.src = e.target.result;
+          img.style.display = 'block';
+          document.getElementById('mock-ui-5').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function exportScreenshot(elementId, filename) {
+      const element = document.getElementById(elementId);
+      const dropzone = element.querySelector('.dropzone-overlay');
+      dropzone.style.display = 'none';
+
+      html2canvas(element, {
+        width: 1290,
+        height: 2796,
+        scale: 1,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#05070B'
+      }).then(canvas => {
+        dropzone.style.display = 'flex';
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>

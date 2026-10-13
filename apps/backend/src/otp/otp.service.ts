@@ -75,11 +75,18 @@ export class OtpService {
    * Verify OTP
    */
   async verifyOtp(identifier: string, otpCode: string): Promise<boolean> {
-    const isDummyAccount =
-      identifier === 'phone:+19999999999' ||
-      identifier === 'phone:+18888888888' ||
-      identifier === 'email:playstore_user@example.com' ||
-      identifier === 'email:playstore_owner@turf.com';
+
+    const dummyAccounts = [
+      'phone:+19999999999',
+      'phone:+18888888888',
+      'phone:+19999999998',
+      'phone:+18888888887',
+      'email:playstore_user@example.com',
+      'email:playstore_owner@turf.com',
+      'email:appstore_user@example.com',
+      'email:appstore_owner@turf.com',
+    ];
+    const isDummyAccount = dummyAccounts.includes(identifier);
 
     if (isDummyAccount && otpCode === '123456') {
       return true;
@@ -120,7 +127,12 @@ export class OtpService {
    * Request OTP for phone
    */
   async requestPhoneOtp(phone: string): Promise<{ expiresIn: number }> {
-    if (phone === '+19999999999' || phone === '+18888888888') {
+    if (
+      phone === '+19999999999' ||
+      phone === '+18888888888' ||
+      phone === '+19999999998' ||
+      phone === '+18888888887'
+    ) {
       return { expiresIn: 600 };
     }
     const otpCode = this.generateOtp();
@@ -135,7 +147,9 @@ export class OtpService {
   async requestEmailOtp(email: string): Promise<{ expiresIn: number }> {
     if (
       email === 'playstore_user@example.com' ||
-      email === 'playstore_owner@turf.com'
+      email === 'playstore_owner@turf.com' ||
+      email === 'appstore_user@example.com' ||
+      email === 'appstore_owner@turf.com'
     ) {
       return { expiresIn: 600 };
     }

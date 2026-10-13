@@ -47,6 +47,9 @@ export class User {
   @Column({ nullable: true })
   phoneVerified: boolean;
 
+  @Column({ nullable: true, unique: true })
+  appleId?: string;
+
   @Column({
     type: 'simple-enum',
     enum: UserRole,
