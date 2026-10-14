@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lock Kiya Jaye - App Store Assets Studio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #080B11;
+      color: #F8FAFC;
+      padding: 40px;
+    }
+    .top-hero {
+      max-width: 1400px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(236, 33, 86, 0.15);
+      border: 1px solid rgba(236, 33, 86, 0.4);
+      color: #FDA4AF;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #EC2156 0%, #F43F5E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      font-size: 20px;
+      color: #94A3B8;
+      max-width: 760px;
+      margin: 0 auto 30px;
+    }
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1600px;
+      margin: 0 auto 60px;
+    }
+    .card-preview {
+      background: #111726;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card-preview:hover {
+      transform: translateY(-4px);
+      border-color: rgba(236, 33, 86, 0.5);
+    }
+    .preview-iframe-wrapper {
+      width: 100%;
+      height: 480px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #05070B;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    iframe {
+      width: 1290px;
+      height: 2796px;
+      transform: scale(0.171);
+      transform-origin: top left;
+      border: none;
+      pointer-events: none;
+    }
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+    }
+    .card-desc {
+      font-size: 15px;
+      color: #94A3B8;
+      line-height: 1.4;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+    }
+    .btn-primary {
+      background: #EC2156;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #BE185D;
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #E2E8F0;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Header Banner Banner Section */
+    .header-banner-section {
+      max-width: 1600px;
+      margin: 0 auto 60px;
+      background: #111726;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 36px;
+    }
+    .banner-preview-img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin: 20px 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-hero">
+    <div class="tag">App Store Connect Asset Suite</div>
+    <h1>Lock Kiya Jaye <span>Visuals Studio</span></h1>
+    <p class="subtitle">
+      5 high-resolution App Store screenshots (1290 × 2796 px) and 1 custom header asset (3840 × 1646 px). Open each to download directly or drop your own app screenshots to replace the preview!
+    </p>
+  </div>
+
+  <!-- Screenshots Grid -->
+  <div class="studio-grid">
+    <!-- Screen 1 -->
+    <div class="card-preview">
+      <div class="preview-iframe-wrapper">
+        <iframe src="screenshots/screenshot_1_discover.html"></iframe>
+      </div>
+      <div class="card-title">1. Discover & Explore Turfs</div>
+      <div class="card-desc">Find top-rated football, cricket & badminton grounds with distance & pricing.</div>
+      <div class="btn-row">
+        <a href="screenshots/screenshot_1_discover.html" target="_blank" class="btn btn-primary">Open & Export (1290x2796)</a>
+      </div>
+    </div>
+
+    <!-- Screen 2 -->
+    <div class="card-preview">
+      <div class="preview-iframe-wrapper">
+        <iframe src="screenshots/screenshot_2_booking.html"></iframe>
+      </div>
+      <div class="card-title">2. Real-Time Slot Selection</div>
+      <div class="card-desc">Live schedule grid, morning/evening filters, and instant lock button.</div>
+      <div class="btn-row">
+        <a href="screenshots/screenshot_2_booking.html" target="_blank" class="btn btn-primary">Open & Export (1290x2796)</a>
+      </div>
+    </div>
+
+    <!-- Screen 3 -->
+    <div class="card-preview">
+      <div class="preview-iframe-wrapper">
+        <iframe src="screenshots/screenshot_3_payments.html"></iframe>
+      </div>
+      <div class="card-title">3. Quick & Secure Checkout</div>
+      <div class="card-desc">Apple Pay, UPI & Cards with immediate digital confirmation pass.</div>
+      <div class="btn-row">
+        <a href="screenshots/screenshot_3_payments.html" target="_blank" class="btn btn-primary">Open & Export (1290x2796)</a>
+      </div>
+    </div>
+
+    <!-- Screen 4 -->
+    <div class="card-preview">
+      <div class="preview-iframe-wrapper">
+        <iframe src="screenshots/screenshot_4_matches.html"></iframe>
+      </div>
+      <div class="card-title">4. Digital Tickets & QR Entry</div>
+      <div class="card-desc">QR gate pass, venue directions, and invite sharing for teammates.</div>
+      <div class="btn-row">
+        <a href="screenshots/screenshot_4_matches.html" target="_blank" class="btn btn-primary">Open & Export (1290x2796)</a>
+      </div>
+    </div>
+
+    <!-- Screen 5 -->
+    <div class="card-preview">
+      <div class="preview-iframe-wrapper">
+        <iframe src="screenshots/screenshot_5_owner.html"></iframe>
+      </div>
+      <div class="card-title">5. Turf Manager & Partner Hub</div>
+      <div class="card-desc">Track ground occupancy, adjust slot rates, and view revenue analytics.</div>
+      <div class="btn-row">
+        <a href="screenshots/screenshot_5_owner.html" target="_blank" class="btn btn-primary">Open & Export (1290x2796)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Banner Section -->
+  <div class="header-banner-section">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h2 style="font-family: 'Outfit'; font-size: 32px; font-weight: 800;">App Store Custom Header Asset (3840 × 1646 px)</h2>
+        <p style="color: #94A3B8; font-size: 16px; margin-top: 4px;">Premium feature graphic with booking card, live slot indicators & brand badge</p>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <a href="AppStore_Header_3840x1646.png" download="AppStore_Header_3840x1646.png" class="btn btn-primary" style="padding: 14px 28px;">Download Header PNG</a>
+        <a href="screenshots/header_asset.html" target="_blank" class="btn btn-secondary" style="padding: 14px 28px;">Open HTML Template</a>
+      </div>
+    </div>
+    <img src="AppStore_Header_3840x1646.png" class="banner-preview-img" alt="Header Banner Preview">
+  </div>
+
+  <!-- Search Results Asset Section -->
+  <div class="header-banner-section">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h2 style="font-family: 'Outfit'; font-size: 32px; font-weight: 800;">App Store Search Results Asset (3840 × 2560 px / 1920 × 1280 px)</h2>
+        <p style="color: #94A3B8; font-size: 16px; margin-top: 4px;">3:2 aspect ratio artwork optimized for App Store search result cards</p>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <a href="AppStore_SearchResults_3840x2560.png" download="AppStore_SearchResults_3840x2560.png" class="btn btn-primary" style="padding: 14px 28px;">Download 3840x2560 PNG</a>
+        <a href="AppStore_SearchResults_1920x1280.png" download="AppStore_SearchResults_1920x1280.png" class="btn btn-secondary" style="padding: 14px 28px;">Download 1920x1280 PNG</a>
+      </div>
+    </div>
+    <img src="AppStore_SearchResults_3840x2560.png" class="banner-preview-img" style="height: 480px;" alt="Search Results Banner Preview">
+  </div>
+
+</body>
+</html>

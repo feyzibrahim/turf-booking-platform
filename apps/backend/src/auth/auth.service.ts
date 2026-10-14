@@ -35,6 +35,7 @@ import { UpdateProfileDto } from './dto/update-profile.dto';
 import { UpdateNotificationsDto } from './dto/update-notifications.dto';
 import { ConfigService } from '@nestjs/config';
 import { GoogleLoginDto } from './dto/google-login.dto';
+import { AppleLoginDto } from './dto/apple-login.dto';
 
 @Injectable()
 export class AuthService {
@@ -539,6 +540,96 @@ export class AuthService {
     });
 
     this.logger.log(`[Google Auth] Login successful for user: ${email}, JWT token generated.`);
+
+    return {
+      user: result,
+      token,
+    };
+  }
+
+  // Native/Mobile Apple token authentication
+  async loginWithAppleToken(dto: AppleLoginDto) {
+    this.logger.log(`[Apple Auth] Received token request: token length=${dto.identityToken?.length}`);
+
+    if (!dto.identityToken) {
+      throw new BadRequestException('Identity token is required');
+    }
+
+    // Decode Apple JWT (identityToken)
+    let decoded: any;
+    try {
+      decoded = this.jwtService.decode(dto.identityToken);
+    } catch (err) {
+      this.logger.error('[Apple Auth] Failed to decode identityToken:', err);
+      throw new UnauthorizedException('Invalid Apple identity token');
+    }
+
+    if (!decoded || !decoded.sub) {
+      this.logger.warn('[Apple Auth] Token payload missing sub');
+      throw new UnauthorizedException('Invalid Apple identity token: missing user identifier');
+    }
+
+    const appleSub = decoded.sub as string;
+    const email = (decoded.email as string | undefined)?.toLowerCase();
+
+    this.logger.log(`[Apple Auth] Verified payload: sub=${appleSub}, email=${email || 'none'}`);
+
+    // Find existing user by appleId or email
+    let user = await this.userRepository.findOne({
+      where: [
+        { appleId: appleSub },
+        ...(email ? [{ email }] : []),
+      ],
+    });
+
+    if (!user) {
+      const finalEmail = email || `${appleSub}@privaterelay.appleid.com`;
+      this.logger.log(`[Apple Auth] Registering new user with email: ${finalEmail}`);
+
+      const newUser = this.userRepository.create({
+        email: finalEmail,
+        appleId: appleSub,
+        firstName: dto.firstName || 'Apple',
+        lastName: dto.lastName || 'User',
+        password: null as any,
+        emailVerified: true,
+        phoneVerified: false,
+        role: UserRole.USER,
+        onboardingStatus: OnboardingStatus.PENDING,
+      });
+      user = await this.userRepository.save(newUser);
+    } else {
+      this.logger.log(`[Apple Auth] Found existing user: ${user.id} (${user.email})`);
+      let changed = false;
+      if (!user.appleId) {
+        user.appleId = appleSub;
+        changed = true;
+      }
+      if (!user.emailVerified) {
+        user.emailVerified = true;
+        changed = true;
+      }
+      if (dto.firstName && (!user.firstName || user.firstName === 'Apple')) {
+        user.firstName = dto.firstName;
+        changed = true;
+      }
+      if (dto.lastName && (!user.lastName || user.lastName === 'User')) {
+        user.lastName = dto.lastName;
+        changed = true;
+      }
+      if (changed) {
+        user = await this.userRepository.save(user);
+      }
+    }
+
+    const { password, ...result } = user;
+    const token = this.jwtService.sign({
+      sub: user.id,
+      role: user.role,
+      email: user.email,
+    });
+
+    this.logger.log(`[Apple Auth] Login successful for user: ${user.email}, JWT generated.`);
 
     return {
       user: result,

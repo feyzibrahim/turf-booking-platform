@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/core/constants/app_assets.dart';
@@ -218,15 +219,50 @@ class _LoginPageState extends State<LoginPage> {
 
                         SizedBox(height: 20.h),
 
-                        // ── GOOGLE ──
+                        // ── SOCIAL LOGINS (Google & Apple) ──
                         Obx(() {
                           final isSending = controller.isSendingOtp.value;
                           final isGoogle = controller.isGoogleLoading.value;
+                          final isApple = controller.isAppleLoading.value;
+                          final isBusy = isSending || isGoogle || isApple;
+
+                          if (Platform.isIOS) {
+                            return Column(
+                              children: [
+                                SocialLogin(
+                                  text: "Continue with Apple",
+                                  icon: Icons.apple,
+                                  iconColor: Colors.white,
+                                  textColor: Colors.white,
+                                  backgroundColor: Colors.black,
+                                  borderColor: Colors.black,
+                                  width: double.infinity,
+                                  isLoading: isApple,
+                                  loadingText: "Signing in with Apple...",
+                                  onTap: isBusy
+                                      ? null
+                                      : () => controller.loginWithApple(),
+                                ),
+                                SizedBox(height: 12.h),
+                                SocialLogin(
+                                  text: "Continue with Google",
+                                  asset: AppAssets.google,
+                                  width: double.infinity,
+                                  isLoading: isGoogle,
+                                  loadingText: "Signing in with Google...",
+                                  onTap: isBusy
+                                      ? null
+                                      : () => controller.loginWithGoogle(),
+                                ),
+                              ],
+                            );
+                          }
+
                           return SocialLogin(
                             text: "Google",
                             asset: AppAssets.google,
                             isLoading: isGoogle,
-                            onTap: (isGoogle || isSending)
+                            onTap: isBusy
                                 ? null
                                 : () => controller.loginWithGoogle(),
                           );

@@ -94,6 +94,25 @@ export class SeedingService {
     });
     users.push(await this.userRepository.save(playstoreUser));
 
+    // App Store Dummy User
+    const appstoreUser = this.userRepository.create({
+      email: 'appstore_user@example.com',
+      phone: '+19999999998',
+      firstName: 'AppStore',
+      lastName: 'User',
+      role: UserRole.USER,
+      emailVerified: true,
+      phoneVerified: true,
+      onboardingStatus: OnboardingStatus.COMPLETED,
+      dateOfBirth: new Date(1990, 0, 1),
+      address: '1 Infinite Loop',
+      city: 'Cupertino',
+      state: 'CA',
+      zipCode: '95014',
+      country: 'USA',
+    });
+    users.push(await this.userRepository.save(appstoreUser));
+
     for (let i = 1; i <= 5; i++) {
       const user = this.userRepository.create({
         email: `user${i}@example.com`,
@@ -138,6 +157,27 @@ export class SeedingService {
       approvalNotes: 'Approved for PlayStore review',
     });
     turfOwners.push(await this.userRepository.save(playstoreOwner));
+
+    // App Store Dummy Owner
+    const appstoreOwner = this.userRepository.create({
+      email: 'appstore_owner@turf.com',
+      password: turfOwnerPassword,
+      phone: '+18888888887',
+      firstName: 'AppStore',
+      lastName: 'Owner',
+      role: UserRole.TURF_OWNER,
+      emailVerified: true,
+      phoneVerified: true,
+      onboardingStatus: OnboardingStatus.COMPLETED,
+      isApproved: true,
+      businessName: 'AppStore Turf Arena',
+      businessAddress: '1 Apple Park Way',
+      businessPhone: '+18888888887',
+      businessDescription: 'Dummy owner account for App Store review',
+      taxId: 'TAX654321',
+      approvalNotes: 'Approved for App Store review',
+    });
+    turfOwners.push(await this.userRepository.save(appstoreOwner));
 
     for (let i = 1; i <= 4; i++) {
       const isApproved = i <= 2; // First 2 are approved
@@ -298,6 +338,179 @@ export class SeedingService {
         draftTurfs: turfs.length - publishedTurfs.length,
         bookings: bookings.length,
       },
+    };
+  }
+
+  /**
+   * Non-destructive seeder that ONLY creates or updates reviewer accounts
+   * (playstore_user, playstore_owner, appstore_user, appstore_owner)
+   * without deleting or affecting any existing database records.
+   */
+  async seedReviewers() {
+    const turfOwnerPassword = await bcrypt.hash('owner123', 10);
+
+    const reviewerUsers = [
+      {
+        email: 'playstore_user@example.com',
+        phone: '+19999999999',
+        firstName: 'PlayStore',
+        lastName: 'User',
+        role: UserRole.USER,
+        emailVerified: true,
+        phoneVerified: true,
+        onboardingStatus: OnboardingStatus.COMPLETED,
+        dateOfBirth: new Date(1990, 0, 1),
+        address: '123 Test St',
+        city: 'New York',
+        state: 'NY',
+        zipCode: '10001',
+        country: 'USA',
+      },
+      {
+        email: 'appstore_user@example.com',
+        phone: '+19999999998',
+        firstName: 'AppStore',
+        lastName: 'User',
+        role: UserRole.USER,
+        emailVerified: true,
+        phoneVerified: true,
+        onboardingStatus: OnboardingStatus.COMPLETED,
+        dateOfBirth: new Date(1990, 0, 1),
+        address: '1 Infinite Loop',
+        city: 'Cupertino',
+        state: 'CA',
+        zipCode: '95014',
+        country: 'USA',
+      },
+    ];
+
+    const reviewerOwners = [
+      {
+        email: 'playstore_owner@turf.com',
+        password: turfOwnerPassword,
+        phone: '+18888888888',
+        firstName: 'PlayStore',
+        lastName: 'Owner',
+        role: UserRole.TURF_OWNER,
+        emailVerified: true,
+        phoneVerified: true,
+        onboardingStatus: OnboardingStatus.COMPLETED,
+        isApproved: true,
+        businessName: 'PlayStore Turf',
+        businessAddress: '100 PlayStore Ave',
+        businessPhone: '+18888888888',
+        businessDescription: 'Dummy account for Play Store review',
+        taxId: 'TAX123456',
+        approvalNotes: 'Approved for PlayStore review',
+      },
+      {
+        email: 'appstore_owner@turf.com',
+        password: turfOwnerPassword,
+        phone: '+18888888887',
+        firstName: 'AppStore',
+        lastName: 'Owner',
+        role: UserRole.TURF_OWNER,
+        emailVerified: true,
+        phoneVerified: true,
+        onboardingStatus: OnboardingStatus.COMPLETED,
+        isApproved: true,
+        businessName: 'AppStore Turf Arena',
+        businessAddress: '1 Apple Park Way',
+        businessPhone: '+18888888887',
+        businessDescription: 'Dummy owner account for App Store review',
+        taxId: 'TAX654321',
+        approvalNotes: 'Approved for App Store review',
+      },
+    ];
+
+    const results = {
+      users: [] as string[],
+      owners: [] as string[],
+      turfsCreated: [] as string[],
+    };
+
+    // Upsert users
+    for (const userData of reviewerUsers) {
+      let user = await this.userRepository.findOne({ where: { email: userData.email } });
+      if (user) {
+        Object.assign(user, userData);
+        await this.userRepository.save(user);
+        results.users.push(`Updated ${userData.email}`);
+      } else {
+        user = this.userRepository.create(userData);
+        await this.userRepository.save(user);
+        results.users.push(`Created ${userData.email}`);
+      }
+    }
+
+    // Upsert owners
+    for (const ownerData of reviewerOwners) {
+      let owner = await this.userRepository.findOne({ where: { email: ownerData.email } });
+      if (owner) {
+        Object.assign(owner, ownerData);
+        owner = await this.userRepository.save(owner);
+        results.owners.push(`Updated ${ownerData.email}`);
+      } else {
+        owner = this.userRepository.create(ownerData);
+        owner = await this.userRepository.save(owner);
+        results.owners.push(`Created ${ownerData.email}`);
+      }
+
+      // Check if owner has at least one turf
+      const existingTurf = await this.turfRepository.findOne({ where: { ownerId: owner.id } });
+      if (!existingTurf) {
+        const turf = this.turfRepository.create({
+          name: `${owner.businessName} - Main Arena`,
+          description: 'High-quality professional sports turf for football and cricket with night floodlights and locker facilities.',
+          address: `${owner.businessAddress}, Field 1`,
+          pricePerHour: 60,
+          amenities: ['Parking', 'Changing Rooms', 'Lighting', 'Water Facility', 'Seating Area'],
+          images: [
+            'https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg',
+            'https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg',
+          ],
+          availableSlots: [
+            '06:00-07:00',
+            '07:00-08:00',
+            '08:00-09:00',
+            '09:00-10:00',
+            '10:00-11:00',
+            '11:00-12:00',
+            '16:00-17:00',
+            '17:00-18:00',
+            '18:00-19:00',
+            '19:00-20:00',
+            '20:00-21:00',
+            '21:00-22:00',
+          ],
+          rules: 'No metal cleats allowed. Please arrive 10 minutes prior.',
+          cancellationPolicyEnabled: true,
+          fullRefundHours: 24,
+          partialRefundHours: 6,
+          partialRefundPercentage: 50,
+          isActive: true,
+          isPublished: true,
+          isDraft: false,
+          publishedAt: new Date(),
+          latitude: 40.7128,
+          longitude: -74.006,
+          googleMapUrl: 'https://maps.google.com/?q=40.7128,-74.006',
+          mapUrl: 'https://maps.google.com/?q=40.7128,-74.006',
+          contactPhone: owner.businessPhone || undefined,
+          contactEmail: owner.email,
+          rating: 4.9,
+          totalReviews: 32,
+          owner: owner,
+          ownerId: owner.id,
+        });
+        await this.turfRepository.save(turf);
+        results.turfsCreated.push(`Created turf for ${owner.email}`);
+      }
+    }
+
+    return {
+      message: 'Reviewer accounts seeded successfully without affecting existing data',
+      results,
     };
   }
 }

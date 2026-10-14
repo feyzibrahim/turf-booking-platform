@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lock Kiya Jaye - App Store Header Asset (3840x1646)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 3840px;
+      height: 1646px;
+      overflow: hidden;
+      background-color: transparent;
+      font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Target Container: Exactly 3840px by 1646px (Apple App Store Header Asset) */
+    .feature-graphic {
+      width: 3840px;
+      height: 1646px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 70% 30%, #15803d 0%, #052e16 45%, #021a0d 100%);
+      box-shadow: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 200px;
+    }
+
+    /* Stadium Light Spotlight Overlay */
+    .spotlight-top-right {
+      position: absolute;
+      top: -300px;
+      right: -150px;
+      width: 1800px;
+      height: 1800px;
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.4) 0%, rgba(34, 197, 94, 0.12) 45%, transparent 70%);
+      filter: blur(140px);
+      pointer-events: none;
+    }
+
+    .spotlight-bottom-left {
+      position: absolute;
+      bottom: -400px;
+      left: -300px;
+      width: 1800px;
+      height: 1800px;
+      background: radial-gradient(circle, rgba(250, 204, 21, 0.18) 0%, transparent 60%);
+      filter: blur(160px);
+      pointer-events: none;
+    }
+
+    /* Turf Pattern Background Grid Lines */
+    .turf-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+      background-size: 120px 120px;
+      pointer-events: none;
+    }
+
+    /* Stadium Field Center Circle Design */
+    .stadium-circle {
+      position: absolute;
+      right: 280px;
+      top: 50%;
+      transform: translateY(-50%) rotateX(55deg) rotateZ(-20deg);
+      width: 1600px;
+      height: 1600px;
+      border: 8px dashed rgba(74, 222, 128, 0.35);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .stadium-circle::after {
+      content: '';
+      position: absolute;
+      inset: 120px;
+      border: 6px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+    }
+
+    /* Left Side Content */
+    .content-left {
+      position: relative;
+      z-index: 10;
+      max-width: 1950px;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 22px;
+      background: rgba(34, 197, 94, 0.18);
+      border: 3px solid rgba(74, 222, 128, 0.4);
+      backdrop-filter: blur(24px);
+      padding: 24px 54px;
+      border-radius: 999px;
+      color: #4ade80;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+
+    .brand-badge span {
+      width: 22px;
+      height: 22px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 25px #4ade80;
+    }
+
+    .brand-title {
+      font-size: 190px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.02;
+      letter-spacing: -4px;
+      margin-bottom: 40px;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .brand-title .highlight {
+      background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #facc15 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-size: 64px;
+      color: #cbd5e1;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 75px;
+      max-width: 1700px;
+    }
+
+    /* Feature Pills */
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 3px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(20px);
+      padding: 26px 50px;
+      border-radius: 32px;
+      color: #f8fafc;
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    .pill svg {
+      width: 52px;
+      height: 52px;
+      fill: none;
+      stroke: #4ade80;
+      stroke-width: 2.8;
+    }
+
+    /* Right Side Visual Graphic Cards */
+    .graphic-right {
+      position: relative;
+      z-index: 10;
+      width: 1350px;
+      height: 1300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main Glassmorphic Card */
+    .glass-card {
+      position: absolute;
+      width: 1080px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 4px solid rgba(74, 222, 128, 0.35);
+      backdrop-filter: blur(40px);
+      border-radius: 72px;
+      padding: 72px;
+      box-shadow: 0 60px 140px rgba(0, 0, 0, 0.7), 0 0 80px rgba(34, 197, 94, 0.3);
+      transform: rotate(-4deg);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .turf-name-box {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .turf-icon-box {
+      width: 130px;
+      height: 130px;
+      background: linear-gradient(135deg, #22c55e, #15803d);
+      border-radius: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);
+    }
+
+    .turf-icon-box svg {
+      width: 76px;
+      height: 76px;
+      fill: #ffffff;
+    }
+
+    .turf-info h4 {
+      color: #ffffff;
+      font-size: 52px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .turf-info p {
+      color: #94a3b8;
+      font-size: 38px;
+    }
+
+    .price-badge {
+      background: rgba(250, 204, 21, 0.15);
+      border: 3px solid rgba(250, 204, 21, 0.5);
+      color: #facc15;
+      font-size: 46px;
+      font-weight: 800;
+      padding: 18px 36px;
+      border-radius: 28px;
+    }
+
+    /* Slots Grid inside Card */
+    .slots-title {
+      color: #cbd5e1;
+      font-size: 36px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 30px;
+    }
+
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .slot-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 28px 16px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 38px;
+      font-weight: 600;
+    }
+
+    .slot-item.locked {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(21, 128, 61, 0.45));
+      border: 3px solid #4ade80;
+      color: #ffffff;
+      box-shadow: 0 0 35px rgba(74, 222, 128, 0.4);
+      position: relative;
+    }
+
+    .slot-item.locked span {
+      display: block;
+      font-size: 26px;
+      color: #4ade80;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* Floating Lock Key Graphic */
+    .floating-lock-badge {
+      position: absolute;
+      top: -55px;
+      right: -55px;
+      background: linear-gradient(135deg, #facc15, #eab308);
+      color: #0f172a;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 60px rgba(250, 204, 21, 0.6);
+      border: 8px solid #052e16;
+      transform: rotate(12deg);
+    }
+
+    .floating-lock-badge svg {
+      width: 80px;
+      height: 80px;
+      fill: #0f172a;
+    }
+
+    /* Secondary Floating Card */
+    .floating-subcard {
+      position: absolute;
+      bottom: 40px;
+      left: -30px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(30px);
+      padding: 34px 50px;
+      border-radius: 44px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6);
+      transform: rotate(5deg);
+    }
+
+    .avatar-group {
+      display: flex;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 5px solid #0f172a;
+      background-size: cover;
+      margin-left: -22px;
+    }
+    .avatar:first-child { margin-left: 0; }
+    .avatar-1 { background-color: #3b82f6; }
+    .avatar-2 { background-color: #ec4899; }
+    .avatar-3 { background-color: #eab308; }
+
+    .subcard-text {
+      color: #ffffff;
+      font-size: 38px;
+      font-weight: 700;
+    }
+
+    .subcard-text span {
+      color: #4ade80;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TARGET CONTAINER (EXACT 3840px x 1646px FOR APP STORE HEADER) -->
+  <div class="feature-graphic" id="feature-graphic">
+    
+    <!-- Background Effects -->
+    <div class="spotlight-top-right"></div>
+    <div class="spotlight-bottom-left"></div>
+    <div class="turf-grid"></div>
+    <div class="stadium-circle"></div>
+
+    <!-- Left Content -->
+    <div class="content-left">
+      <div class="brand-badge">
+        <span></span> Premium Turf Booking Platform
+      </div>
+
+      <h1 class="brand-title">
+        LOCKKIYA<span class="highlight">JAYE</span>
+      </h1>
+
+      <p class="tagline">
+        Book Sports Turfs & Lock Slots Instantly.<br>Anytime, Anywhere.
+      </p>
+
+      <div class="feature-pills">
+        <div class="pill">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Live Availability
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Instant Slot Lock
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Football & Cricket
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side Graphic UI Elements -->
+    <div class="graphic-right">
+      
+      <!-- Main Booking Mock Card -->
+      <div class="glass-card">
+        
+        <!-- Floating Lock Icon -->
+        <div class="floating-lock-badge">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+
+        <div class="card-header">
+          <div class="turf-name-box">
+            <div class="turf-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+            </div>
+            <div class="turf-info">
+              <h4>Arena Turf 7v7</h4>
+              <p>📍 Green Park Sports</p>
+            </div>
+          </div>
+          <div class="price-badge">₹1,200/hr</div>
+        </div>
+
+        <div class="slots-title">Select & Lock Slot</div>
+        
+        <div class="slots-grid">
+          <div class="slot-item">06:00 PM</div>
+          <div class="slot-item">07:00 PM</div>
+          <div class="slot-item locked">
+            08:00 PM
+            <span>LOCKED</span>
+          </div>
+          <div class="slot-item">09:00 PM</div>
+          <div class="slot-item">10:00 PM</div>
+          <div class="slot-item">11:00 PM</div>
+        </div>
+      </div>
+
+      <!-- Secondary Floating Badge -->
+      <div class="floating-subcard">
+        <div class="avatar-group">
+          <div class="avatar avatar-1"></div>
+          <div class="avatar avatar-2"></div>
+          <div class="avatar avatar-3"></div>
+        </div>
+        <div class="subcard-text">
+          Slot Confirmed! <span>Match Ready</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

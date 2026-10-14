@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-pink: #EC2156;
+  --primary-pink-glow: rgba(236, 33, 86, 0.45);
+  --emerald-green: #10B981;
+  --emerald-glow: rgba(16, 185, 129, 0.35);
+  --cyan-neon: #06B6D4;
+  --bg-dark: #0A0E17;
+  --bg-card: rgba(18, 24, 38, 0.75);
+  --text-white: #FFFFFF;
+  --text-dim: #94A3B8;
+  --text-muted: #64748B;
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --phone-width: 960px;
+  --phone-height: 1980px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #05070B;
+  color: var(--text-white);
+  margin: 0;
+  padding: 0;
+  width: 1290px;
+  height: 2796px;
+  overflow: hidden;
+}
+
+/* Master canvas at App Store 6.7" / 6.9" dimensions */
+.appstore-canvas {
+  width: 1290px;
+  height: 2796px;
+  position: relative;
+  background: radial-gradient(circle at 50% 10%, #151D30 0%, #0A0E17 65%, #05070B 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 140px;
+  box-shadow: none;
+  border: none;
+}
+
+/* Atmospheric lights & glow effects */
+.ambient-glow-top {
+  position: absolute;
+  top: -200px;
+  width: 1100px;
+  height: 800px;
+  background: radial-gradient(circle, var(--primary-pink-glow) 0%, rgba(236, 33, 86, 0) 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ambient-glow-bottom {
+  position: absolute;
+  bottom: -200px;
+  width: 1200px;
+  height: 900px;
+  background: radial-gradient(circle, var(--emerald-glow) 0%, rgba(16, 185, 129, 0) 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pitch-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header Text Container */
+.header-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1120px;
+  margin-bottom: 70px;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(16px);
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #38BDF8;
+  margin-bottom: 34px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.badge-tag.pink {
+  color: #FDA4AF;
+  border-color: rgba(244, 63, 94, 0.4);
+  background: rgba(244, 63, 94, 0.12);
+}
+
+.badge-tag.green {
+  color: #6EE7B7;
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 86px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  background: linear-gradient(180deg, #FFFFFF 20%, #E2E8F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+}
+
+.headline .highlight-pink {
+  background: linear-gradient(135deg, #FF6584 0%, #EC2156 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headline .highlight-green {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subheadline {
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-dim);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* iPhone 16 Pro Frame */
+.iphone-frame {
+  position: relative;
+  z-index: 10;
+  width: var(--phone-width);
+  height: var(--phone-height);
+  background: #1C1F26;
+  border-radius: 120px;
+  padding: 24px;
+  box-shadow: 
+    0 0 0 8px #2D333F,
+    0 0 0 12px #181B22,
+    0 50px 140px rgba(0, 0, 0, 0.85),
+    0 0 100px rgba(236, 33, 86, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-container {
+  width: 100%;
+  height: 100%;
+  background: #0B0E14;
+  border-radius: 96px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 64px;
+  background: #000000;
+  border-radius: 40px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.island-camera {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0F172A 30%, #000 100%);
+  margin-left: auto;
+}
+
+.island-sensor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #090D16;
+  margin-right: 14px;
+}
+
+/* Screen Content Area */
+.screen-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Screenshot Image (When uploaded by user) */
+.user-screenshot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: none;
+}
+
+/* Dropzone Overlay for Easy Screenshot Placement */
+.dropzone-overlay {
+  display: none !important;
+}
+
+/* Export floating action bar */
+.toolbar-controls {
+  display: none !important;
+}
+
+.tool-btn {
+  background: linear-gradient(135deg, #EC2156, #BE185D);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease;
+}
+
+.tool-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.tool-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+}

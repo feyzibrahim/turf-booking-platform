@@ -71,6 +71,38 @@ class AuthService {
     }
   }
 
+  /// POST /auth/apple/token — send identityToken from native Apple Sign-In SDK
+  Future<Map<String, dynamic>> loginWithApple({
+    required String identityToken,
+    String? authorizationCode,
+    String? firstName,
+    String? lastName,
+  }) async {
+    try {
+      final payload = <String, dynamic>{
+        'identityToken': identityToken,
+      };
+      if (authorizationCode != null && authorizationCode.isNotEmpty) {
+        payload['authorizationCode'] = authorizationCode;
+      }
+      if (firstName != null && firstName.isNotEmpty) {
+        payload['firstName'] = firstName;
+      }
+      if (lastName != null && lastName.isNotEmpty) {
+        payload['lastName'] = lastName;
+      }
+
+      final response = await http.post(
+        Uri.parse('$_base/apple/token'),
+        headers: _headers,
+        body: jsonEncode(payload),
+      );
+      return _handleResponse(response);
+    } catch (e) {
+      return {'success': false, 'message': e.toString()};
+    }
+  }
+
   /// POST /auth/register
   Future<Map<String, dynamic>> register({
     required String email,

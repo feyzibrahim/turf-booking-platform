@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Mobile</string>
+	<string>Lockkiyajaye</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,10 +22,34 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.961272022138-bq7gioopbhhrbaictd83njfg9m3ntj5s</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>GIDClientID</key>
+	<string>961272022138-bq7gioopbhhrbaictd83njfg9m3ntj5s.apps.googleusercontent.com</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Lockkiyajaye needs access to your camera to take a profile picture.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Lockkiyajaye needs access to your location to find nearby turfs and show venues near you.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Lockkiyajaye needs access to your photo library to select a profile picture.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -65,34 +89,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Lockkiyajaye needs access to your photo library to select a profile picture.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Lockkiyajaye needs access to your camera to take a profile picture.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Lockkiyajaye needs access to your location to find nearby turfs and show venues near you.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Lockkiyajaye needs access to your location to find nearby turfs and show venues near you.</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
-	<key>GIDClientID</key>
-	<string>961272022138-bq7gioopbhhrbaictd83njfg9m3ntj5s.apps.googleusercontent.com</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.961272022138-bq7gioopbhhrbaictd83njfg9m3ntj5s</string>
-			</array>
-		</dict>
 	</array>
 </dict>
 </plist>
