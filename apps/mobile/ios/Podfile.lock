@@ -1,37 +1,20 @@
 PODS:
   - Flutter (1.0.0)
-  - razorpay-core-pod (1.0.7)
-  - razorpay-pod (1.5.7):
-    - razorpay-core-pod (= 1.0.7)
-  - razorpay_flutter (1.1.10):
-    - Flutter
-    - razorpay-pod
   - sign_in_with_apple (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - razorpay_flutter (from `.symlinks/plugins/razorpay_flutter/ios`)
   - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
-
-SPEC REPOS:
-  trunk:
-    - razorpay-core-pod
-    - razorpay-pod
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  razorpay_flutter:
-    :path: ".symlinks/plugins/razorpay_flutter/ios"
   sign_in_with_apple:
     :path: ".symlinks/plugins/sign_in_with_apple/ios"
 
 SPEC CHECKSUMS:
   Flutter: 71a624a5bc0c04062bf19101d501e466baf2fb47
-  razorpay-core-pod: c7f3ac3d214c1a7fac4e9a59c1de7eac02130573
-  razorpay-pod: 3c91ef4895d389968a5c56a6f1e9943e44b50fa0
-  razorpay_flutter: 0e98e4fcaae27ad50e011d85f66d85e0a008754a
   sign_in_with_apple: c5dcc141574c8c54d5ac99dd2163c0c72ad22418
 
 PODFILE CHECKSUM: f297e78eeb28972c5fa919877667f3460987eb98
